@@ -1,6 +1,5 @@
 node{
-  def mvnHome 
-  def scannerHome
+ 
 stage('SCM Checkout'){
 
  git 'https://github.com/galamsiva2020/SpringwithHibernateApplication.git'
