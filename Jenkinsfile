@@ -8,7 +8,7 @@ stage('SCM Checkout'){
  
  stage('MavenHome'){
           mvnHome ='D:/GALAM/SivaDevopsSoftwares/apache-maven-3.6.0-bin/apache-maven-3.6.0'
-        sh "${mvnHome}/bin/mvn package"
+       // sh "${mvnHome}/bin/mvn package"
 }
 
   stage('SonarQube analysis') {
