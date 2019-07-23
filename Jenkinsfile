@@ -33,6 +33,6 @@ stage('SonarQube analysis') {
     //withSonarQubeEnv('SonarQube 6.2') {
       //bat "${scannerHome}/bin/sonar-scanner.bat"
    // }
-  }
+  //}
 }
   }
