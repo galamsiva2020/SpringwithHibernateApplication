@@ -10,12 +10,12 @@ stage('SCM Checkout'){
       
 }
  
- /* stage('SonarQube analysis') {
-    def scannerHome = tool 'SonarScanner 4.0';
-    withSonarQubeEnv('My SonarQube Server') { // If you have configured more than one global server connection, you can specify its name
+  stage('SonarQube analysis') {
+    def scannerHome = tool 'SonarScanner 2.8';
+    withSonarQubeEnv('LocalSonarQubeserver') { // If you have configured more than one global server connection, you can specify its name
       sh "${scannerHome}/bin/sonar-scanner"
     }
-  }*/
+  }
 /* 
 stage('SonarQube analysis') {
     withSonarQubeEnv('LocalSonarQubeserver') {
@@ -25,7 +25,7 @@ stage('SonarQube analysis') {
 } 
 */
  
- stage('SonarQube analysis') {
+/* stage('SonarQube analysis') {
   scannerHome= 'D:/GALAM/sonarqube-6.2/sonarqube-6.2/bin/windows-x86-64'
     //ws('D:\\my_prj') {
     // requires SonarQube Scanner 2.8+
@@ -34,5 +34,6 @@ stage('SonarQube analysis') {
       //bat "${scannerHome}/bin/sonar-scanner.bat"
    // }
   //}
-}
+}*/
+ 
   }
