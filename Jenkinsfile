@@ -6,15 +6,9 @@ stage('SCM Checkout'){
  }
  
  stage('MavenHome'){
-          mvnHome ='D:/GALAM/SivaDevopsSoftwares/apache-maven-3.6.0-bin/apache-maven-3.6.0'
+          mvnHome ='C:/Program Files (x86)/apache-maven-3.6.0-bin/apache-maven-3.6.0'
       
 }
-
- stage('SonarQube analysis') {
-    withSonarQubeEnv(credentialsId: '5573752016db3b4ea336341bdfb80fc51f0d0f93', installationName: 'SonarServer') { // You can override the credential to be used
-      sh 'mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.6.0.1398:sonar'
-    }
-  }
  
  /* stage('SonarQube analysis') {
     def scannerHome = tool 'SonarScanner 4.0';
