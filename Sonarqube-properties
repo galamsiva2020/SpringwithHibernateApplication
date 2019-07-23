@@ -1,0 +1,7 @@
+sonar.projectKey=pipelinesonar
+sonar.projectName=TestPipeline
+sonar.projectVersion=1.1
+sonar.sources=src
+sonar.java.binaries=target/
+sonar.scm.disabled=true
+sonar.language=java
