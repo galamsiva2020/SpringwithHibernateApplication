@@ -1,17 +1,18 @@
-version :0.2
+version: 0.2
 phases:
-	   pre-build:
-	   commands:
-	      -echo "Enter the pre-build phases in aws"
-		  build:
-		   commands:
-		   - echo "Entered build phases"
-		   - mvn clean package
+   pre_build:
+      commands:
+      -echo "Enter the pre-build phases in aws"
+   build:
+      commands:
+      - echo "Entered build phases"
+      - mvn clean package
 		   
-		post-build:
-		commands:
-		  - echo "Entered the post-build phase"
-                  - mv target/
-		artifacts:
-		files:
-             - target/
+   post_build:
+      commands:
+      - echo "Entered the post-build phase"
+      - mv target/
+	
+artifacts:
+   files:
+     - target/
