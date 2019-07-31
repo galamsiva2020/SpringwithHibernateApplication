@@ -10,8 +10,8 @@ phases:
 		   
 		post-build:
 		commands:
-		  -echo "Entered the post-build phase"
-      - mv target/**
+		  - echo "Entered the post-build phase"
+                  - mv target/
 		artifacts:
 		files:
-   - target/**/*
+             - target/
