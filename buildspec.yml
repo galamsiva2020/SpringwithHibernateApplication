@@ -7,12 +7,7 @@ phases:
       commands:
       - echo "Entered build phases"
       - mvn clean package
-		   
-   post_build:
-      commands:
-      - echo "Entered the post-build phase"
-      - mv target/
-	
+      
 artifacts:
    files:
-     - target/
+     - target/*.war
