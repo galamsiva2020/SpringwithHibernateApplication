@@ -1,39 +1,25 @@
-node{
- 
-stage('SCM Checkout'){
+// Powered by Infostretch 
 
- git 'https://github.com/galamsiva2020/SpringwithHibernateApplication.git'
- }
- 
- stage('MavenHome'){
-          mvnHome ='C:/Program Files (x86)/apache-maven-3.6.0-bin/apache-maven-3.6.0'
-      
+timestamps {
+
+node () {
+
+	stage ('SpringApplication-AWSTest - Checkout') {
+ 	 checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'a03b1ab3-f4d2-44a5-b98f-040b8fe3d562', url: 'https://github.com/galamsiva2020/SpringwithHibernateApplication.git']]]) 
+	}
+	stage ('SpringApplication-AWSTest - Build') {
+ 	
+withEnv(["JAVA_HOME=${ tool '"+JDK+"' }", "PATH=${env.JAVA_HOME}/bin"]) { 
+		// Maven build step
+	withMaven(jdk: '(Inherit From Job)', maven: 'MyMaven') { 
+ 			if(isUnix()) {
+ 				sh "mvn package " 
+			} else { 
+ 				bat "mvn package " 
+			} 
+ 		}
+// Unable to convert a build step referring to "hudson.plugins.sonar.SonarRunnerBuilder". Please verify and convert manually if required. 
+	}
 }
- 
- /* stage('SonarQube analysis') {
-    def scannerHome = tool 'SonarScanner 6.2';
-    withSonarQubeEnv('LocalSonarQubeserver') { // If you have configured more than one global server connection, you can specify its name
-      sh "${scannerHome}/bin/sonar-scanner"
-    }
-  }*/
-/* 
-stage('SonarQube analysis') {
-    withSonarQubeEnv('LocalSonarQubeserver') {
-      sh 'mvn clean package sonar:sonar'
-     // submitted SonarQube taskId is automatically attached to the pipeline context
-  }
-} 
-*/
- 
- stage('SonarQube analysis') {
-  scannerHome= 'D:/GALAM/sonarqube-6.2/sonarqube-6.2/bin/windows-x86-64'
-    //ws('D:\\my_prj') {
-    // requires SonarQube Scanner 2.8+
-   // def scannerHome = tool 'sonarScanner';
-    //withSonarQubeEnv('SonarQube 6.2') {
-      //bat "${scannerHome}/bin/sonar-scanner.bat"
-   //}
-  //}
 }
- 
-  }
+}
